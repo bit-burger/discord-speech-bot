@@ -1,7 +1,7 @@
 {
   "name": "discord-speech-bot",
   "version": "1.0.0",
-  "description": "Configurable discord speech bot, plays audio after a command was voiced by the user",
+  "description": "Discord speech bot, with configurable commands",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
