@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "properties": {
+    "speech": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "speechData": {
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "minItems": 1,
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^([a-zA-Z-]{1,45}|((?!0)\\d{1,6}|0)(\\.\\d+)?)$"
+              }
+            }
+          },
+          "playResource": {
+            "type": "string",
+            "pattern": "^(https://?(?:www\\.)?(?:m\\.)?(?:music\\.)?youtube(?:\\.com)?(?:(?:\\w*.?://)?\\w*.?\\w*-?.?\\w*/(?:embed|e|v|watch|.*/)?\\??(?:feature=\\w*\\.?\\w*)?&?(?:v=)?/?)([\\w\\d_-]{11})|.+\\.(mp3|mp4))$"
+          }
+        },
+        "errorMessage": {
+          "properties": {
+            "speechData": "speech.speechData should be an array of array of strings, the strings should be words and numbers (until 999999) like 'well-dressed' or '0'",
+            "playResource": "speech.playResource should be a resource to play, that means a youtube link or a path to a mp3/mp4"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["speechData", "playResource"]
+      }
+    },
+    "token": {
+      "type": "string",
+      "pattern": "^\\w{24}\\.\\w{6}\\.\\w{27}$"
+    }
+  },
+  "errorMessage": {
+    "properties": {
+      "speech": "speech should be an array of of speech-commands, they have two properties: The speechData and playResource",
+      "token": "token should be a valid discord token, for the bot to use"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["speech", "token"]
+}

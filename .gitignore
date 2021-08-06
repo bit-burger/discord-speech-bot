@@ -1,0 +1,5 @@
+.vscode
+speech-config.json
+node_modules
+**/*.mp3
+**/*.mp4

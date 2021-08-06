@@ -1,0 +1,24 @@
+{
+  "name": "discord-speech-bot",
+  "version": "1.0.0",
+  "description": "Configurable discord speech bot, plays audio after a command was voiced by the user",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.5.3",
+    "@discordjs/voice": "^0.5.5",
+    "ajv": "^8.6.2",
+    "ajv-errors": "^3.0.0",
+    "discord-speech-recognition": "^1.0.6",
+    "discord.js": "^12.5.3",
+    "ffmpeg-static": "^4.4.0",
+    "sodium": "^3.0.2",
+    "ytdl-core": "^4.9.1"
+  }
+}
