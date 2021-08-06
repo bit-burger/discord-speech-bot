@@ -1,7 +1,7 @@
 const schema = require("./config-schema.json");
 const config = require("../speech-config.json");
 const Ajv = require("ajv").default;
-const ajv = new Ajv({ allErrors: true });
+const ajv = new Ajv({ allErrors: true, useDefaults: true });
 
 require("ajv-errors")(ajv);
 const validate = ajv.compile(schema);

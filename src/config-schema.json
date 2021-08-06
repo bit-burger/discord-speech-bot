@@ -38,12 +38,18 @@
     "token": {
       "type": "string",
       "pattern": "^\\w{24}\\.\\w{6}\\.\\w{27}$"
+    },
+    "logging": {
+      "type": "string",
+      "enum": ["all", "allWithoutEmpty", "onlyValidCommands", "none"],
+      "default": "onlyValidCommands"
     }
   },
   "errorMessage": {
     "properties": {
       "speech": "speech should be an array of of speech-commands, they have two properties: The speechData and playResource",
-      "token": "token should be a valid discord token, for the bot to use"
+      "token": "token should be a valid discord token, for the bot to use",
+      "logging": "logging has the possible values of: all, allWithoutEmpty, onlyValidCommands and none. If this option isn't provided, the default is 'onlyValidCommands'"
     }
   },
   "additionalProperties": false,

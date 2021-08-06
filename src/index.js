@@ -1,11 +1,11 @@
-const { Client, Message } = require("discord.js");
+const { Client } = require("discord.js");
 const { DiscordSR } = require("discord-speech-recognition");
 const ytdl = require("ytdl-core");
 
 const client = new Client();
 new DiscordSR(client);
 
-const { token, speech } = require("./loadConfig");
+const { token, speech, logging } = require("./loadConfig");
 
 client.on("voiceStateUpdate", async (oldState, newState) => {
   if (oldState.member.bot) return;
@@ -47,13 +47,23 @@ function sleep(milliseconds) {
 }
 
 client.on("speech", (message) => {
+  if (message.content === "all") {
+    console.log(message ?? "[EMPTY BUFFER]");
+  }
   if (!message.content) return;
+  if (message.content === "allWithoutEmpty") {
+    console.log(message);
+  }
+  if (logging) console.log(message.content);
   for (const speechCommand of speech) {
     const validSpeechData = speechCommand.speechData.find((ls) =>
       containsEachString(message.content, ls)
     );
     if (validSpeechData) {
       playResource(message.channel, speechCommand.playResource);
+      if (message.content === "onlyValidCommands") {
+        console.log(message);
+      }
       return;
     }
   }
