@@ -50,28 +50,27 @@ function sleep(milliseconds) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
-client.on("speech", (message) => {
-  if (message.content === "all") {
-    console.log(message ?? "[EMPTY BUFFER]");
 // Will check each child of 'speech' for its speechData.
 // The speechData contains an array of arrays with words in it.
 // If each word of one of the subarrays is found in the transcript,
 // the first valid child's playResource is then taken and played.
 // Will also check the logging configuration to log at the correct time
+client.on("speech", (speechMessage) => {
+  if (logging === "all") {
+    console.log(speechMessage ?? "[EMPTY BUFFER]");
   }
-  if (!message.content) return;
-  if (message.content === "allWithoutEmpty") {
-    console.log(message);
+  if (!speechMessage.content) return;
+  if (logging === "allWithoutEmpty") {
+    console.log(speechMessage);
   }
-  if (logging) console.log(message.content);
   for (const speechCommand of speech) {
     const validSpeechData = speechCommand.speechData.find((ls) =>
-      containsEachString(message.content, ls)
+      containsEachString(speechMessage.content, ls)
     );
     if (validSpeechData) {
-      playResource(message.channel, speechCommand.playResource);
-      if (message.content === "onlyValidCommands") {
-        console.log(message);
+      playResource(speechMessage.channel, speechCommand.playResource);
+      if (logging === "onlyValidCommands") {
+        console.log(speechMessage);
       }
       return;
     }
