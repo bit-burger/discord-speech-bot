@@ -20,8 +20,8 @@ Discord speech bot, with configurable commands
 
 ## Run the bot
 - invite the bot into a server and give it the permissions to enter voice channels and speak
-- go into a voice channel and say 'Rickroll'
 - for basic running or locally testing just use run `npm start` in the project folder
+- to test it, go into a voice channel in the server and say 'Rickroll'
 - for running it longer you can host it on [heroku](https://www.heroku.com) or use [pm2](https://pm2.keymetrics.io)
 
 ## Further configuration
