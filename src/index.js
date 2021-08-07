@@ -100,5 +100,11 @@ function containsEachString(s, ls) {
 // Use the event ready, to log if the connection with Discord was successful
 client.once("ready", () => console.log("bot has started"));
 
+// Log out of discord before program shuts down
+require("./cleanup")(() => {
+  client.destroy();
+  console.log("Exited and logged out of discord");
+});
+
 // Login with the token provided by the speech-config.json
 client.login(token);
