@@ -5,7 +5,7 @@ Discord speech bot, with configurable commands
 - clone the repository or download it and save it somewhere
 - [download nodejs](https://nodejs.org/en/download/) (if you haven't already) and run `npm i` in the project folder
 - in the project folder, write a new file called speech-config.json
-- copy paste the defaults below into the file and replace the '[DISCORD BOT TOKEN]' with your discord bot token from [discord developers](https://discord.com/developers)
+- copy paste the example configuration below into the file and replace the '[DISCORD BOT TOKEN]' with your discord bot token from [discord developers](https://discord.com/developers)
 ```json
 {
   "speech": [
@@ -19,13 +19,15 @@ Discord speech bot, with configurable commands
 ```
 
 ## Run the bot
+- invite the bot into a server and give it the permissions to enter voice channels and speak
+- go into a voice channel and say 'Rickroll'
 - for basic running or locally testing just use run `npm start` in the project folder
 - for running it longer you can host it on [heroku](https://www.heroku.com) or use [pm2](https://pm2.keymetrics.io)
 
 ## Further configuration
 - customize the logging, by setting the logging property to 'all', 'allWithoutEmpty', 'onlyValidCommands' or 'none', by default it is allWithoutEmpty
 - add new speech commands to the speech array. Each speech command needs the speechData, which consists of different word groups that can activate the command and the play resource, which can either be a youtube link or a path to either a mp3 or mp4
-### Example of a more complicated configuration might be: 
+#### Example of a more complicated configuration might be: 
 ```json
 {
   "speech": [
