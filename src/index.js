@@ -57,11 +57,11 @@ function sleep(milliseconds) {
 // Will also check the logging configuration to log at the correct time
 client.on("speech", (speechMessage) => {
   if (logging === "all") {
-    console.log(speechMessage ?? "[EMPTY BUFFER]");
+    console.log(speechMessage.content ?? "[EMPTY BUFFER]");
   }
   if (!speechMessage.content) return;
   if (logging === "allWithoutEmpty") {
-    console.log(speechMessage);
+    console.log(speechMessage.content);
   }
   for (const speechCommand of speech) {
     const validSpeechData = speechCommand.speechData.find((ls) =>
@@ -70,7 +70,7 @@ client.on("speech", (speechMessage) => {
     if (validSpeechData) {
       playResource(speechMessage.channel, speechCommand.playResource);
       if (logging === "onlyValidCommands") {
-        console.log(speechMessage);
+        console.log(speechMessage.content);
       }
       return;
     }
