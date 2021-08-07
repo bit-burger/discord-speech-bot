@@ -97,6 +97,8 @@ function containsEachString(s, ls) {
   );
 }
 
+// Use the event ready, to log if the connection with Discord was successful
 client.once("ready", () => console.log("bot has started"));
 
+// Login with the token provided by the speech-config.json
 client.login(token);
